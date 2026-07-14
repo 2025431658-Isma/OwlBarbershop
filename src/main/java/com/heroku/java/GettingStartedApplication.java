@@ -1,5 +1,7 @@
 package com.heroku.java;
-
+import org.jscience.physics.amount.Amount;
+import org.jscience.physics.model.RelativisticModel;
+import javax.measure.unit.SI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,7 +23,14 @@ public class GettingStartedApplication {
     public GettingStartedApplication(DataSource dataSource) {
         this.dataSource = dataSource;
     }
+    @GetMapping("/convert")
+    String convert(Map<String, Object> model) {
+       RelativisticModel.select();
+       var energy = Amount.valueOf("12 GeV");
 
+    model.put("result", "E=mc^2: " + energy + " = " + energy.to(SI.KILOGRAM));
+    return "convert";
+    }
     @GetMapping("/")
     public String index() {
         return "index";

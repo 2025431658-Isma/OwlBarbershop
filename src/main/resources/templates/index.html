@@ -1,61 +1,927 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owl Barbershop - Professional Grooming Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+ 
+</head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-cut"></i>
+                <span>Owl Barbershop</span>
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+                <a href="#services"><i class="fas fa-cut"></i> Services</a>
+                <a href="#booking"><i class="fas fa-calendar-alt"></i> Book Now</a>
+                <a href="product.html"><i class="fas fa-shopping-bag"></i> Products</a>
+                <a href="#testimonials"><i class="fas fa-star"></i> Testimonials</a>
+                <a href="#contact"><i class="fas fa-phone"></i> Contact</a>
+                
+                <div class="auth-buttons" id="authButtons">
+                    <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <a href="register.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Register</a>
+                </div>
+                
+                <div class="user-menu" id="userMenu">
+                    <div class="user-dropdown">
+                        <button class="user-btn">
+                            <i class="fas fa-user-circle"></i>
+                            <span id="userName">John Doe</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="showDashboardModal()"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                           
+                            
+                            <!-- Role-specific links (hidden by default, shown based on role) -->
+                            <div id="adminLinks" style="display: none;">
+                                <div class="divider"></div>
+                                <a href="admin-dashboard.html"><i class="fas fa-cog"></i> Admin Panel</a>
+                                <a href="admin-dashboard.html"><i class="fas fa-chart-bar"></i> Reports</a>
+                                <a href="admin-dashboard.html"><i class="fas fa-users-cog"></i> User Management</a>
+                            </div>
+                            
+                            <div id="staffLinks" style="display: none;">
+                                <div class="divider"></div>
+                                <a href="booking-staff-dashboard.html"><i class="fas fa-calendar-day"></i> Schedule</a>
+                                <a href="booking-staff-dashboard.html"><i class="fas fa-users"></i> Customers</a>
+                            </div>
+                            
+                            <div class="divider"></div>
+                                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                    
+                <button class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+        </div>
+    </nav>
 
-<div class="jumbotron text-center">
-    <div class="container">
-        <a href="/" class="lang-logo">
-            <img alt="" src="/lang-logo.png">
-        </a>
-        <h1>Getting Started with Java on Heroku</h1>
-        <p>This is a sample Java application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
-        <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-java"><span class="glyphicon glyphicon-flash"></span> Getting Started on Heroku with Java</a>
-        <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-java-maven-fir"><span class="glyphicon glyphicon-flash"></span> Getting Started on Heroku Fir with Java</a>
-        <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/java-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
-    </div>
-</div>
-<div class="container">
-    <div class="lead">
-        To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to either of the following tutorials:
-        <ul>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-java" class="alert-link">Getting Started on Heroku with Java</a></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-java-maven-fir" class="alert-link">Getting Started on Heroku Fir with Java</a></li>
-        </ul>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-md-6">
-            <h3><span class="glyphicon glyphicon-info-sign"></span> How this sample app works</h3>
-            <ul>
-                <li>This app was deployed to Heroku using Git.</li>
-                <li>When Heroku received the source code, it fetched all the dependencies in <a href="https://github.com/heroku/java-getting-started/blob/main/pom.xml">pom.xml</a>, creating a deployable build artifact.</li>
-                <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the build artifact can be mounted and executed.</li>
-                <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-            </ul>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-up">
+                <h1>Professional Grooming, Perfect Style</h1>
+                <p>Book your appointment online and experience premium barber services at Owl Barbershop. Fast, convenient, and always stylish. Located in Muar, Johor.</p>
+                <div class="hero-buttons">
+                    <a href="#booking" class="btn btn-primary btn-lg">
+                        <i class="fas fa-calendar-plus"></i> Book Appointment
+                    </a>
+                    <a href="#services" class="btn btn-outline btn-lg">
+                        <i class="fas fa-cut"></i> View Services
+                    </a>
+                </div>
+                <div class="hero-stats" style="margin-top: 40px; display: flex; gap: 30px;">
+                    <div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: 5px;">500+</h3>
+                        <p style="color: var(--gray-color);">Happy Customers</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: 5px;">98%</h3>
+                        <p style="color: var(--gray-color);">Satisfaction Rate</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: 5px;">24/7</h3>
+                        <p style="color: var(--gray-color);">Online Booking</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image animate-up">
+                <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Professional Barber at Work">
+            </div>
         </div>
-        <div class="col-md-6">
-            <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
-            <ul>
-                <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-java">Getting Started on Heroku with Java</a> or <a href="https://devcenter.heroku.com/articles/getting-started-with-java-maven-fir">Getting Started on Heroku Fir with Java</a> guide, then please head back to the tutorial and follow the next steps!</li>
-            </ul>
-            <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-            <ul>
-                <li><a href="https://www.heroku.com/home">Heroku</a></li>
-                <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-                <li><a href="https://devcenter.heroku.com/articles/getting-started-with-java">Getting Started on Heroku with Java</a></li>
-                <li><a href="https://devcenter.heroku.com/articles/getting-started-with-java-maven-fir">Getting Started on Heroku Fir with Java</a></li>
-                <li><a href="https://devcenter.heroku.com/articles/deploying-java">Deploying Java Apps on Heroku</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="row" style="margin-top:1em">
-        <div class="col-md-12">
-            <p class="alert alert-info" role="alert">
-                Please do work through the Getting Started guide, even if you do know how to build such an application. The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
-            </p>
-        </div>
-    </div>
-</div>
+    </section>
 
+    <!-- Services Section -->
+    <section class="services-preview" id="services">
+        <div class="container">
+            <div class="section-header animate-up">
+                <h2>Our Premium Services</h2>
+                <p>Professional grooming services tailored to your style and preferences</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card animate-up">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Haircut & Styling</h3>
+                    <p>Professional haircut with modern styling and finishing touches</p>
+                    <div class="service-price">RM 25.00</div>
+                    <a href="#booking" class="btn btn-outline">Book Now</a>
+                </div>
+                
+                <div class="service-card animate-up" style="animation-delay: 0.2s;">
+                    <div class="service-icon">
+                        <i class="fas fa-air-freshener"></i>
+                    </div>
+                    <h3>Beard Trim</h3>
+                    <p>Precision beard shaping, trimming, and grooming for the perfect look</p>
+                    <div class="service-price">RM 15.00</div>
+                    <a href="#booking" class="btn btn-outline">Book Now</a>
+                </div>
+                
+                <div class="service-card animate-up" style="animation-delay: 0.4s;">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Haircut & Beard Combo</h3>
+                    <p>Complete grooming package including haircut and beard service</p>
+                    <div class="service-price">RM 35.00</div>
+                    <a href="#booking" class="btn btn-outline">Book Now</a>
+                </div>
+                
+                <div class="service-card animate-up" style="animation-delay: 0.6s;">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Hair Coloring</h3>
+                    <p>Professional hair coloring with premium products and expert technique</p>
+                    <div class="service-price">RM 50.00</div>
+                    <a href="#booking" class="btn btn-outline">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="services.html" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> View All Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header animate-up">
+                <h2>How It Works</h2>
+                <p>Book your appointment in 3 simple steps</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step animate-up">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Create Account</h3>
+                    <p>Register for free in less than 2 minutes with your basic information</p>
+                </div>
+                
+                <div class="step animate-up" style="animation-delay: 0.2s;">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Book Appointment</h3>
+                    <p>Select your preferred service, date, and available time slot</p>
+                </div>
+                
+                <div class="step animate-up" style="animation-delay: 0.4s;">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <h3>Visit & Enjoy</h3>
+                    <p>Arrive at your scheduled time and enjoy premium grooming service</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Booking Section -->
+    <section class="services-preview" id="booking" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="container">
+            <div class="section-header animate-up">
+                <h2 style="color: white;">Book Your Appointment</h2>
+                <p style="color: rgba(255,255,255,0.8);">Get your preferred time slot in seconds</p>
+            </div>
+            
+            <div class="booking-widget animate-up" style="max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: var(--border-radius); box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                <h3 style="color: var(--primary-color); margin-bottom: 20px; text-align: center;">Quick Booking</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; color: var(--dark-color); font-weight: 500;">Select Service</label>
+                    <select style="width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: var(--border-radius); font-size: 16px;">
+                        <option value="">Choose a service...</option>
+                        <option value="1">Haircut & Styling - RM 25.00</option>
+                        <option value="2">Beard Trim - RM 15.00</option>
+                        <option value="3">Haircut & Beard Combo - RM 35.00</option>
+                        <option value="4">Hair Coloring - RM 50.00</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; color: var(--dark-color); font-weight: 500;">Preferred Date</label>
+                    <input type="date" style="width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: var(--border-radius); font-size: 16px;">
+                </div>
+                
+                <div style="margin-bottom: 30px;">
+                    <label style="display: block; margin-bottom: 8px; color: var(--dark-color); font-weight: 500;">Preferred Time</label>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                        <button class="btn btn-outline btn-sm" style="border-color: #ddd;">9:00 AM</button>
+                        <button class="btn btn-outline btn-sm" style="border-color: #ddd;">10:30 AM</button>
+                        <button class="btn btn-outline btn-sm" style="border-color: #ddd;">12:00 PM</button>
+                        <button class="btn btn-outline btn-sm" style="border-color: #ddd;">2:00 PM</button>
+                        <button class="btn btn-outline btn-sm" style="border-color: #ddd;">3:30 PM</button>
+                        <button class="btn btn-outline btn-sm" style="border-color: #ddd;">5:00 PM</button>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <a href="bookings.html" class="btn btn-primary btn-lg" style="width: 100%;">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                    <p style="margin-top: 15px; color: var(--gray-color); font-size: 14px;">
+                        <i class="fas fa-info-circle"></i> Already have an account? <a href="login.html" style="color: var(--secondary-color);">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header animate-up">
+                <h2>What Our Customers Say</h2>
+                <p>Join hundreds of satisfied customers who trust Owl Barbershop</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial animate-up">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Best barbershop in Muar! The online booking system is super convenient and saves me so much time. Always get a perfect cut!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmed R.">
+                        <div>
+                            <h4>Ahmed R.</h4>
+                            <span>Regular Customer for 2 years</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial animate-up" style="animation-delay: 0.2s;">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Professional service every time. I love being able to book from my phone and get instant confirmation. The barbers are true artists!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Raj K.">
+                        <div>
+                            <h4>Raj K.</h4>
+                            <span>Business Professional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-cut"></i> Owl Barbershop</h3>
+                    <p>Professional grooming services with advanced online booking system. Located in Muar, Johor. Experience the perfect blend of traditional barbering and modern convenience.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#services"><i class="fas fa-cut"></i> Services</a></li>
+                        <li><a href="#booking"><i class="fas fa-calendar-alt"></i> Book Now</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-star"></i> Testimonials</a></li>
+                        <li><a href="#contact"><i class="fas fa-phone"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-cut"></i> Haircut & Styling</a></li>
+                        <li><a href="#"><i class="fas fa-air-freshener"></i> Beard Trimming</a></li>
+                        <li><a href="#"><i class="fas fa-palette"></i> Hair Coloring</a></li>
+                        <li><a href="#"><i class="fas fa-spa"></i> Head Massage</a></li>
+                        <li><a href="#"><i class="fas fa-child"></i> Kids Haircut</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, Muar, Johor</li>
+                        <li><i class="fas fa-phone"></i> (06) 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@owlbarbershop.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 8PM, Sun: 10AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Owl Barbershop System. All rights reserved. | ISP501 Project - M3CS2663B | Semester October 2025 - February 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // ===== GLOBAL VARIABLES =====
+        let currentUser = null;
+
+        // ===== DOM CONTENT LOADED =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the page
+            initPage();
+            
+            // Check login status
+            checkLoginStatus();
+            
+            // Setup event listeners
+            setupEventListeners();
+            
+            // Add animation on scroll
+            setupScrollAnimations();
+        });
+
+        // ===== PAGE INITIALIZATION =====
+        function initPage() {
+            console.log('Owl Barbershop System Initialized');
+            
+            // Set minimum date for booking to today
+            const dateInput = document.querySelector('input[type="date"]');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+                dateInput.value = today;
+            }
+            
+            // Set up time slot buttons
+            setupTimeSlotButtons();
+        }
+
+        // ===== CHECK LOGIN STATUS =====
+        // ===== CHECK LOGIN STATUS =====
+function checkLoginStatus() {
+    // Check if user is logged in
+    const userData = localStorage.getItem('owl_user');
+    
+    if (userData) {
+        currentUser = JSON.parse(userData);
+        showUserMenu();
+        
+        // Check if we need to show dashboard modal based on role
+        checkForDashboardRedirect();
+    } else {
+        showAuthButtons();
+    }
+}
+
+// ===== CHECK FOR DASHBOARD REDIRECT =====
+function checkForDashboardRedirect() {
+    const userData = JSON.parse(localStorage.getItem('owl_user'));
+    
+    // Check if user just logged in (has redirectRole)
+    if (userData && userData.redirectRole) {
+        const role = userData.redirectRole;
+        
+        // Remove the redirectRole flag
+        delete userData.redirectRole;
+        localStorage.setItem('owl_user', JSON.stringify(userData));
+        
+        // Show appropriate dashboard modal
+        setTimeout(() => {
+            showRoleSpecificDashboard(role);
+        }, 500);
+    }
+}
+
+// ===== SHOW ROLE-SPECIFIC DASHBOARD =====
+function showRoleSpecificDashboard(role) {
+    // Create dashboard modal based on role
+    const dashboardModal = createDashboardModal(role);
+    
+    // Add modal to page
+    document.body.insertAdjacentHTML('beforeend', dashboardModal);
+    
+    // Show modal
+    const modal = document.getElementById('dashboardModal');
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        
+        // Close modal when clicking X or outside
+        setupModalCloseEvents();
+        
+        // Add greeting based on time of day
+        updateDashboardGreeting();
+    }
+}
+
+// ===== CREATE DASHBOARD MODAL =====
+function createDashboardModal(role) {
+    const user = JSON.parse(localStorage.getItem('owl_user'));
+    const userName = user.full_name || 'User';
+    const userEmail = user.email || '';
+    const userRole = user.role || 'customer';
+    
+    // Get current time for greeting
+    const currentHour = new Date().getHours();
+    let greeting = 'Good morning';
+    if (currentHour >= 12 && currentHour < 18) greeting = 'Good afternoon';
+    if (currentHour >= 18) greeting = 'Good evening';
+    
+    // Role-specific content
+    let dashboardTitle = 'Customer Dashboard';
+    let dashboardContent = '';
+    
+    switch(userRole) {
+        case 'admin':
+            dashboardTitle = 'Administrator Dashboard';
+            dashboardContent = `
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3><i class="fas fa-users"></i> Total Users</h3>
+                        <p class="stat-number">152</p>
+                        <p class="stat-label">Registered Users</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3><i class="fas fa-calendar-check"></i> Today's Appointments</h3>
+                        <p class="stat-number">12</p>
+                        <p class="stat-label">Bookings</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3><i class="fas fa-money-bill-wave"></i> Revenue</h3>
+                        <p class="stat-number">RM 1,850</p>
+                        <p class="stat-label">This Week</p>
+                    </div>
+                </div>
+                <div class="dashboard-actions">
+                    <a href="admin-dashboard.html" class="btn btn-primary">
+                        <i class="fas fa-cog"></i> Manage System
+                    </a>
+                </div>
+            `;
+            break;
+            
+        case 'staff':
+            dashboardTitle = 'Staff Dashboard';
+            dashboardContent = `
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3><i class="fas fa-clock"></i> Today's Schedule</h3>
+                        <p class="stat-number">8</p>
+                        <p class="stat-label">Appointments</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3><i class="fas fa-user-check"></i> Upcoming</h3>
+                        <p class="stat-number">3</p>
+                        <p class="stat-label">Next 2 Hours</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3><i class="fas fa-star"></i> Rating</h3>
+                        <p class="stat-number">4.8</p>
+                        <p class="stat-label">Average Rating</p>
+                    </div>
+                </div>
+                <div class="dashboard-actions">
+                    <a href="staff-dashboard.html" class="btn btn-primary">
+                        <i class="fas fa-cog"></i> Staff : Manage System
+                    </a>
+                </div>
+            `;
+            break;
+            
+        default: // customer
+            dashboardTitle = 'Customer Dashboard';
+            dashboardContent = `
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3><i class="fas fa-calendar"></i> Upcoming</h3>
+                        <p class="stat-number">2</p>
+                        <p class="stat-label">Appointments</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3><i class="fas fa-history"></i> Completed</h3>
+                        <p class="stat-number">15</p>
+                        <p class="stat-label">Past Services</p>
+                    </div>
+                    
+                </div>
+                <div class="dashboard-actions">
+                    <a href="my-bookings.html" class="btn btn-primary">
+                        <i class="fas fa-calendar-check"></i> My Bookings
+                    </a>
+                    
+                </div>
+            `;
+    }
+    
+    return `
+        <div id="dashboardModal" class="dashboard-modal">
+            <div class="dashboard-modal-content">
+                <div class="dashboard-header">
+                    <button class="dashboard-close">&times;</button>
+                    <h2><i class="fas fa-tachometer-alt"></i> ${dashboardTitle}</h2>
+                    <p class="dashboard-greeting">${greeting}, <strong>${userName}</strong>! Welcome back to Owl Barbershop.</p>
+                    <div class="user-info">
+                        <span class="user-role-badge ${userRole}">${userRole.toUpperCase()}</span>
+                        <span class="user-email">${userEmail}</span>
+                    </div>
+                </div>
+                
+                <div class="dashboard-body">
+                    ${dashboardContent}
+                    
+                    <div class="quick-links">
+                        <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                        <div class="quick-links-grid">
+                            ${userRole === 'admin' ? `
+                                
+                            ` : userRole === 'staff' ? `
+                                <a href="booking-staff-dashboard.html" class="quick-link">
+                                    <i class="fas fa-list"></i>
+                                    <span>Today's List</span>
+                                </a>
+                                <a href="booking-staff-dashboard.html" class="quick-link">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span>Add Booking</span>
+                                </a>
+                                <a href="booking-staff-dashboard.html" class="quick-link">
+                                    <i class="fas fa-history"></i>
+                                    <span>Service History</span>
+                                </a>
+                            ` : `
+                                
+                            `}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-footer">
+                    <p>You can access your dashboard anytime from the user menu <i class="fas fa-chevron-down"></i></p>
+                    <button class="btn btn-outline" id="closeDashboard">Continue to Homepage</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// ===== SETUP MODAL CLOSE EVENTS =====
+function setupModalCloseEvents() {
+    const modal = document.getElementById('dashboardModal');
+    const closeBtn = document.querySelector('.dashboard-close');
+    const closeDashboardBtn = document.getElementById('closeDashboard');
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    if (closeDashboardBtn) {
+        closeDashboardBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+// ===== UPDATE DASHBOARD GREETING =====
+function updateDashboardGreeting() {
+    const greetingElement = document.querySelector('.dashboard-greeting');
+    if (!greetingElement) return;
+    
+    const currentHour = new Date().getHours();
+    let greeting = 'Good morning';
+    if (currentHour >= 12 && currentHour < 18) greeting = 'Good afternoon';
+    if (currentHour >= 18) greeting = 'Good evening';
+    
+    const userName = currentUser ? currentUser.full_name : 'User';
+    greetingElement.textContent = `${greeting}, ${userName}! Welcome back to Owl Barbershop.`;
+}
+
+        // ===== SHOW USER MENU =====
+        function showUserMenu() {
+            const authButtons = document.getElementById('authButtons');
+            const userMenu = document.getElementById('userMenu');
+            const userName = document.getElementById('userName');
+            
+            if (authButtons) authButtons.style.display = 'none';
+            if (userMenu) userMenu.style.display = 'block';
+            if (userName && currentUser) userName.textContent = currentUser.full_name || 'User';
+        }
+
+        // ===== SHOW AUTH BUTTONS =====
+        function showAuthButtons() {
+            const authButtons = document.getElementById('authButtons');
+            const userMenu = document.getElementById('userMenu');
+            
+            if (authButtons) authButtons.style.display = 'flex';
+            if (userMenu) userMenu.style.display = 'none';
+        }
+
+        // ===== SETUP EVENT LISTENERS =====
+        function setupEventListeners() {
+            // Mobile navigation toggle
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('show');
+                });
+            }
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (navLinks && navToggle && 
+                    !navLinks.contains(event.target) && 
+                    !navToggle.contains(event.target)) {
+                    navLinks.classList.remove('show');
+                }
+            });
+            
+            // Logout button
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            }
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            // Close mobile menu after clicking
+                            if (navLinks) navLinks.classList.remove('show');
+                        }
+                    }
+                });
+            });
+            
+            // Service booking buttons
+            document.querySelectorAll('.service-card .btn, .booking-widget .btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (!currentUser) {
+                        e.preventDefault();
+                        alert('Please login or register to book an appointment!');
+                        window.location.href = 'login.html';
+                    }
+                });
+            });
+        }
+
+        // ===== SETUP TIME SLOT BUTTONS =====
+        function setupTimeSlotButtons() {
+            const timeButtons = document.querySelectorAll('.booking-widget .btn-outline');
+            timeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all time buttons
+                    timeButtons.forEach(btn => {
+                        btn.classList.remove('btn-primary');
+                        btn.classList.add('btn-outline');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.remove('btn-outline');
+                    this.classList.add('btn-primary');
+                    
+                    // Update booking button text
+                    const bookBtn = document.querySelector('.booking-widget .btn-primary[href="bookings.html"]');
+                    if (bookBtn) {
+                        const time = this.textContent;
+                        bookBtn.innerHTML = `<i class="fas fa-calendar-check"></i> Book at ${time}`;
+                    }
+                });
+            });
+            
+            // Set first time slot as default
+            if (timeButtons.length > 0) {
+                timeButtons[0].click();
+            }
+        }
+
+        // ===== LOGOUT FUNCTION =====
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('owl_user');
+                currentUser = null;
+                showAuthButtons();
+                window.location.href = 'index.html';
+            }
+        }
+
+        // ===== SCROLL ANIMATIONS =====
+        function setupScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with animate-up class
+            document.querySelectorAll('.animate-up').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(element);
+            });
+        }
+
+        // ===== DEMO LOGIN FUNCTION (for testing) =====
+        function demoLogin() {
+            // This is a demo function - in real app, this would connect to backend
+            currentUser = {
+                id: 1,
+                username: 'demo_user',
+                full_name: 'Demo User',
+                email: 'demo@owlbarbershop.com',
+                role: 'customer',
+                phone: '012-3456789'
+            };
+            
+            localStorage.setItem('owl_user', JSON.stringify(currentUser));
+            showUserMenu();
+            alert('Demo login successful! You can now book appointments.');
+        }
+
+        // ===== BOOKING FUNCTIONS =====
+        function quickBook() {
+            if (!currentUser) {
+                alert('Please login to book an appointment!');
+                return;
+            }
+            
+            const serviceSelect = document.querySelector('.booking-widget select');
+            const dateInput = document.querySelector('.booking-widget input[type="date"]');
+            const activeTimeBtn = document.querySelector('.booking-widget .btn-primary');
+            
+            if (!serviceSelect.value) {
+                alert('Please select a service!');
+                serviceSelect.focus();
+                return;
+            }
+            
+            const serviceName = serviceSelect.options[serviceSelect.selectedIndex].text;
+            const date = dateInput.value;
+            const time = activeTimeBtn ? activeTimeBtn.textContent : 'Selected Time';
+            
+            // Show booking confirmation
+            const confirmation = confirm(`Confirm Booking:\n\nService: ${serviceName}\nDate: ${formatDate(date)}\nTime: ${time}\n\nClick OK to confirm.`);
+            
+            if (confirmation) {
+                // In real app, this would send data to backend
+                alert(`Booking confirmed!\n\nYou will receive a confirmation email shortly.\n\nBooking Details:\n- Service: ${serviceName}\n- Date: ${formatDate(date)}\n- Time: ${time}\n\nThank you for choosing Owl Barbershop!`);
+                
+                // Reset form
+                serviceSelect.value = '';
+                dateInput.value = new Date().toISOString().split('T')[0];
+                
+                // Reset time buttons
+                const timeButtons = document.querySelectorAll('.booking-widget .btn-outline');
+                timeButtons.forEach(btn => {
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-outline');
+                });
+                if (timeButtons.length > 0) {
+                    timeButtons[0].classList.remove('btn-outline');
+                    timeButtons[0].classList.add('btn-primary');
+                }
+            }
+        }
+
+        // ===== HELPER FUNCTIONS =====
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // ===== EXPORT FUNCTIONS TO GLOBAL SCOPE =====
+        window.demoLogin = demoLogin;
+        window.quickBook = quickBook;
+        window.logout = logout;
+
+        // ===== INITIAL LOADING ANIMATION =====
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(function() {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+
+        // ===== SHOW ROLE-SPECIFIC LINKS IN DROPDOWN =====
+        function updateUserDropdownLinks() {
+            if (!currentUser) return;
+            
+            const adminLinks = document.getElementById('adminLinks');
+            const staffLinks = document.getElementById('staffLinks');
+            
+            // Hide all role-specific links first
+            if (adminLinks) adminLinks.style.display = 'none';
+            if (staffLinks) staffLinks.style.display = 'none';
+            
+            // Show links based on role
+            if (currentUser.role === 'admin' && adminLinks) {
+                adminLinks.style.display = 'block';
+            } else if (currentUser.role === 'staff' && staffLinks) {
+                staffLinks.style.display = 'block';
+            }
+        }
+
+        // Call this in showUserMenu()
+        function showUserMenu() {
+            const authButtons = document.getElementById('authButtons');
+            const userMenu = document.getElementById('userMenu');
+            const userName = document.getElementById('userName');
+            
+            if (authButtons) authButtons.style.display = 'none';
+            if (userMenu) userMenu.style.display = 'block';
+            if (userName && currentUser) userName.textContent = currentUser.full_name || 'User';
+            
+            // Update dropdown links based on role
+            updateUserDropdownLinks();
+        }
+
+        // Add function to show dashboard modal from dropdown
+        function showDashboardModal() {
+            showRoleSpecificDashboard(currentUser.role);
+        }
+    </script>
+
+    <!-- Demo Login Button (Hidden by default, can be enabled for testing) -->
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <button onclick="demoLogin()" style="background: var(--secondary-color); color: white; border: none; padding: 10px 15px; border-radius: 50px; cursor: pointer; box-shadow: var(--box-shadow); display: none;">
+            <i class="fas fa-user-secret"></i> Demo Login
+        </button>
+    </div>
+
+    <style>
+        /* Demo button style */
+        [onclick="demoLogin()"] {
+            display: block !important; /* Change to block to show demo button */
+        }
+    </style>
 </body>
 </html>
+
+
+
+
+
